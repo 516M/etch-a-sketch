@@ -7,26 +7,31 @@ container.style.margin = "3rem";
 container.style.padding = "4rem";
 container.style.border = "1px solid black";
 
-function createAndAppendPixel(parent, index) {
-  let idx = Number.isInteger(index) ? index : "";
-  let pixel = document.createElement("div");
+function createGrid(parent, size) {
+  if (!parent) return;
 
-  pixel.className = "pixel-item" + idx;
-  pixel.style.flex = "1 1 1em";
-  pixel.style.width = "16px";
-  pixel.style.height = "16px";
-  pixel.style.border = "1px solid black";
-  pixel.style.backgroundColor = "white";
+  let row = document.createElement("div");
+  row.className = "row0-0";
 
-  if (parent) {
-    parent.append(pixel);
+  for (let i = 0; i < GRIDS; i++) {
+    for (let j = 0; j < GRIDS; j++) {
+      let idx = +i + "-" + j;
+      let pixel = document.createElement("div");
+      pixel.className = "pixel-item" + idx;
+      pixel.style.flex = "1 1 1em";
+      pixel.style.width = "16px";
+      pixel.style.height = "16px";
+      pixel.style.border = "1px solid black";
+      pixel.style.backgroundColor = "white";
+      row.append(pixel);
+    }
+    parent.appendChild(row);
+    row = document.createElement("div");
+    row.className = "row" + i;
   }
 }
-
 const GRIDS = 16;
-for (let i = 0; i < GRIDS; i++) {
-  createAndAppendPixel(container, i);
-}
+createGrid(container, GRIDS);
 
 function colorPixels(e) {
   let target = e.target;
