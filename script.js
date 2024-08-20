@@ -10,7 +10,7 @@ function createAndAppendPixel(parent, index) {
   let idx = Number.isInteger(index) ? index : "";
   let pixel = document.createElement("div");
 
-  pixel.className = "pixel" + idx;
+  pixel.className = "pixel-item" + idx;
   pixel.style.flex = "1 1 1em";
   pixel.style.width = "16px";
   pixel.style.height = "16px";
