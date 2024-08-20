@@ -1,2 +1,4 @@
 let container = document.querySelector(".container");
-let pixel = document.createElement("div");
+
+container.style.display = "flex";
+container.style.border = "1px solid black";
