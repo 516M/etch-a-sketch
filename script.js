@@ -31,6 +31,7 @@ function colorPixels(e) {
   let target = e.target;
   let pixelColor = target.style.backgroundColor;
 
+  if (!e.target.className.includes("pixel")) return;
   if (pixelColor == "black") {
     e.target.style.backgroundColor = "white";
   } else {
