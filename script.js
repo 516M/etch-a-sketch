@@ -1,9 +1,10 @@
 let container = document.querySelector(".container");
 
 container.style.display = "flex";
-container.style.width = "60%";
+container.style.flexFlow = "row";
+container.style.justifyContent = "center";
 container.style.margin = "3rem";
-container.style.padding = "2rem";
+container.style.padding = "4rem";
 container.style.border = "1px solid black";
 
 function createAndAppendPixel(parent, index) {
