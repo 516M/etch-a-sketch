@@ -23,3 +23,15 @@ const GRIDS = 16;
 for (let i = 0; i < GRIDS; i++) {
   createAndAppendPixel(container, i);
 }
+
+function colorPixels(e) {
+  let target = e.target;
+  let pixelColor = target.style.backgroundColor;
+
+  if (pixelColor == "black") {
+    e.target.style.backgroundColor = "white";
+  } else {
+    e.target.style.backgroundColor = "black";
+  }
+}
+container.addEventListener("mouseover", colorPixels);
