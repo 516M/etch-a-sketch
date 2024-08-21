@@ -15,9 +15,8 @@ function createGrid(parent, size) {
     column.className = "column" + i;
 
     for (let j = 0; j < GRIDS; j++) {
-      let idx = +i + "-" + j;
       let pixel = document.createElement("div");
-      pixel.className = "pixel-item" + idx;
+      pixel.className = "pixel-item" + i + "-" + j;
       pixel.style.flex = "1 1 1em";
       pixel.style.width = "16px";
       pixel.style.height = "16px";
