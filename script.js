@@ -10,10 +10,10 @@ container.style.border = "1px solid black";
 function createGrid(parent, size) {
   if (!parent) return;
 
-  let row = document.createElement("div");
-  row.className = "row0-0";
-
   for (let i = 0; i < GRIDS; i++) {
+    let column = document.createElement("div");
+    column.className = "column" + i;
+
     for (let j = 0; j < GRIDS; j++) {
       let idx = +i + "-" + j;
       let pixel = document.createElement("div");
@@ -23,11 +23,9 @@ function createGrid(parent, size) {
       pixel.style.height = "16px";
       pixel.style.border = "1px solid black";
       pixel.style.backgroundColor = "white";
-      row.append(pixel);
+      column.append(pixel);
     }
-    parent.appendChild(row);
-    row = document.createElement("div");
-    row.className = "row" + i;
+    parent.appendChild(column);
   }
 }
 const GRIDS = 16;
