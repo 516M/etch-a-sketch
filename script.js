@@ -44,6 +44,11 @@ function colorPixels(e) {
 }
 container.addEventListener("mouseover", colorPixels);
 
+document.body.style.display = "flex";
+document.body.style.justifyContent = "center";
+document.body.style.alignItems = "center";
+document.body.style.flexDirection = "column";
+
 const btn = document.createElement("button");
 btn.textContent = "New Grid";
 btn.style.padding = "1rem";
