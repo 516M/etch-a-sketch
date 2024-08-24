@@ -86,3 +86,20 @@ function createGridFromClick(e) {
 }
 btn.addEventListener("click", createGridFromClick);
 document.body.prepend(btn);
+
+const clear_btn = document.createElement("button");
+clear_btn.textContent = "Clear grid";
+clear_btn.setAttribute(
+  `style`,
+  `padding: 1rem;
+  margin: 1rem;`,
+);
+
+function clearGrid(e) {
+  const pixels = document.querySelectorAll(`[class*="pixel-item"]`);
+  for (let i = 0; i < pixels.length; i++) {
+    pixels[i].style.backgroundColor = "white";
+  }
+}
+clear_btn.addEventListener("click", clearGrid);
+document.body.append(clear_btn);
