@@ -6,13 +6,17 @@ document.body.setAttribute(
   flex-direction: column;`,
 );
 
+const CELL_SIZE = 500;
 let container = document.querySelector(".container");
 container.setAttribute(
   `style`,
   `display: flex;
-  justify-content: centr;
-  margin: 3rem;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
   padding: 4rem;
+  width: ${CELL_SIZE}px;
+  height: ${CELL_SIZE}px;
   border: 1px solid black;`,
 );
 
@@ -29,11 +33,12 @@ function createGrid(parent, size) {
       pixel.className = "pixel-item" + i + "-" + j;
       pixel.setAttribute(
         `style`,
-        `flex: 1 1 1em;
-        width: 16px;
-        height: 16px;
+        `width: ${CELL_SIZE / size}px;
+        height: ${CELL_SIZE / size}px;
         border: 1px solid black;
-        background-color: white`,
+        background-color: white;
+        box-sizing: border-box;
+        `,
       );
 
       column.append(pixel);
@@ -62,7 +67,7 @@ btn.textContent = "New Grid";
 btn.setAttribute(
   `style`,
   `padding: 1rem;
-  margin: 1.2rem;`,
+  margin: 1rem;`,
 );
 
 function createGridFromClick(e) {
