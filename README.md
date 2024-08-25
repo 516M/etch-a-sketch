@@ -1,15 +1,13 @@
-# Etch-a-Sketch
+# Etch-a-Sketch [Link to the project on TOP](https://www.theodinproject.com/lessons/foundations-etch-a-sketch)
 
-## [Link to the project on TOP](https://www.theodinproject.com/lessons/foundations-etch-a-sketch)
-
-### Preview:
+#### Preview:
 
 ![image](preview.gif "Preview")
 
 #### Description:
 * Works like your average etch-a-sketch app, but with a few extra additions.
 
-### Features:
+#### Features:
 
 * Hovering your mouse over the pixels colors the cells the opposite color.
 
@@ -20,7 +18,7 @@
 * Git
 * Github
 
-### Things that I deemed important to remember:
+## Things that I deemed important to remember:
 
 * (HTML) `defer` is a useful keyword if you want your js script to load after everything on the page has fully loaded. Alternatively you can just append the script after the body's definition, but it can still be a bit clean this way.
 
