@@ -6,6 +6,9 @@ document.body.setAttribute(
   flex-direction: column;`,
 );
 
+let pencil = "monochrome";
+const BLACK = "rgb(0, 0, 0)"; // Note: When comparing strings, you'll need the space after the comma...
+const WHITE = "rgb(255, 255, 255)";
 const CELL_SIZE = 500;
 let container = document.querySelector(".container");
 container.setAttribute(
@@ -36,7 +39,7 @@ function createGrid(parent, size) {
         `width: ${CELL_SIZE / size}px;
         height: ${CELL_SIZE / size}px;
         border: 1px solid black;
-        background-color: white;
+        background-color: ${WHITE};
         box-sizing: border-box;
         `,
       );
@@ -50,14 +53,17 @@ const GRIDS = 16;
 createGrid(container, GRIDS);
 
 function colorPixels(e) {
+  if (!e.target.className.includes("pixel")) return;
+
   let target = e.target;
   let pixelColor = target.style.backgroundColor;
 
-  if (!e.target.className.includes("pixel")) return;
-  if (pixelColor == "black") {
-    e.target.style.backgroundColor = "white";
-  } else {
-    e.target.style.backgroundColor = "black";
+  if (pencil == "monochrome") {
+    if (pixelColor == BLACK) {
+      e.target.style.backgroundColor = WHITE;
+    } else {
+      e.target.style.backgroundColor = BLACK;
+    }
   }
 }
 container.addEventListener("mouseover", colorPixels);
