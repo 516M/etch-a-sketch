@@ -1,7 +1,5 @@
 # Etch-a-Sketch [Link to the project on TOP](https://www.theodinproject.com/lessons/foundations-etch-a-sketch)
 
-#### Preview:
-
 ![image](preview.gif "Preview")
 
 #### Description:
