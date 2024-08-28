@@ -64,6 +64,8 @@ function colorPixels(e) {
     } else {
       e.target.style.backgroundColor = BLACK;
     }
+  } else if (pencil == "rainbow") {
+    e.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
   }
 }
 container.addEventListener("mouseover", colorPixels);
