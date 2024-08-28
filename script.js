@@ -38,7 +38,7 @@ function createGrid(parent, size) {
         `style`,
         `width: ${CELL_SIZE / size}px;
         height: ${CELL_SIZE / size}px;
-        border: 1px solid black;
+        border: 1px solid rgba(0, 0, 0, .1);
         background-color: ${WHITE};
         box-sizing: border-box;
         `,
