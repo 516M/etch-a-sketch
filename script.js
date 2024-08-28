@@ -52,6 +52,10 @@ function createGrid(parent, size) {
 const GRIDS = 16;
 createGrid(container, GRIDS);
 
+function getRngRGB() {
+  return Math.floor(Math.random() * 255);
+}
+
 function colorPixels(e) {
   if (!e.target.className.includes("pixel")) return;
 
@@ -65,7 +69,7 @@ function colorPixels(e) {
       e.target.style.backgroundColor = BLACK;
     }
   } else if (pencil == "rainbow") {
-    e.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
+    e.target.style.backgroundColor = `rgb(${getRngRGB()}, ${getRngRGB()}, ${getRngRGB()})`;
   }
 }
 container.addEventListener("mouseover", colorPixels);
