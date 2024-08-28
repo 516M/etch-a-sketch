@@ -6,7 +6,7 @@ document.body.setAttribute(
   flex-direction: column;`,
 );
 
-let pencil = "monochrome";
+let pencil = "rainbow";
 const BLACK = "rgb(0, 0, 0)"; // Note: When comparing strings, you'll need the space after the comma...
 const WHITE = "rgb(255, 255, 255)";
 const CELL_SIZE = 500;
@@ -115,3 +115,50 @@ function clearGrid(e) {
 }
 clear_btn.addEventListener("click", clearGrid);
 document.body.append(clear_btn);
+
+const pen_container = document.createElement("div");
+pen_container.setAttribute(
+  `style`,
+  `display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;`,
+);
+function getClickedButton(e) {
+  const targ = e.target;
+
+  if (typeof targ.className != "string" || targ.className == "") return;
+  pencil = targ.className;
+}
+pen_container.addEventListener("click", getClickedButton);
+document.body.append(pen_container);
+
+const monochrome_pen = document.createElement("button");
+monochrome_pen.setAttribute(
+  `style`,
+  `padding: 1rem;
+  margin: 1rem;
+  border: 1px solid rgba(0,0,0,.5);
+  background-image: linear-gradient(black, white);
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(255,255,255);`,
+);
+monochrome_pen.textContent = "Monochrome pen";
+monochrome_pen.className = "monochrome";
+pen_container.append(monochrome_pen);
+
+const rainbow_pen = document.createElement("button");
+rainbow_pen.setAttribute(
+  `style`,
+  `padding: 1rem;
+  margin: 1rem;
+  border: 1px solid rgba(0,0,0,.5);
+  background-image: linear-gradient(red, orange, yellow, green, cyan, blue, purple);
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(255,255,255);`,
+);
+rainbow_pen.textContent = "Rainbow pen";
+rainbow_pen.className = "rainbow";
+pen_container.append(rainbow_pen);
