@@ -6,10 +6,13 @@ document.body.setAttribute(
   flex-direction: column;`,
 );
 
-let pencil = "rainbow";
+const GRIDS = 16;
 const BLACK = "rgb(0, 0, 0)"; // Note: When comparing strings, you'll need the space after the comma...
 const WHITE = "rgb(255, 255, 255)";
 const CELL_SIZE = 500;
+let pencil = "rainbow";
+let grid_size = GRIDS;
+
 let container = document.querySelector(".container");
 container.setAttribute(
   `style`,
@@ -40,6 +43,7 @@ function createGrid(parent, size) {
         height: ${CELL_SIZE / size}px;
         border: 1px solid rgba(0, 0, 0, .1);
         background-color: ${WHITE};
+        opacity = 1;
         box-sizing: border-box;
         `,
       );
@@ -49,7 +53,6 @@ function createGrid(parent, size) {
     parent.appendChild(column);
   }
 }
-const GRIDS = 16;
 createGrid(container, GRIDS);
 
 function getRngRGB() {
@@ -62,12 +65,16 @@ function colorPixels(e) {
   let target = e.target;
   let pixelColor = target.style.backgroundColor;
 
-  if (pencil == "monochrome") {
+  if (pencil == "monochrome-legacy") {
     if (pixelColor == BLACK) {
       e.target.style.backgroundColor = WHITE;
     } else {
       e.target.style.backgroundColor = BLACK;
     }
+  } else if (pencil == "monochrome") {
+    e.target.style.backgroundColor = BLACK;
+    e.target.style.opacity =
+      e.target.style.opacity < 1 ? +e.target.style.opacity + 0.1 : 1;
   } else if (pencil == "rainbow") {
     e.target.style.backgroundColor = `rgb(${getRngRGB()}, ${getRngRGB()}, ${getRngRGB()})`;
   }
@@ -93,6 +100,7 @@ function createGridFromClick(e) {
     while (container.firstChild) {
       container.removeChild(container.firstChild);
     }
+    grid_size = newSize;
     createGrid(container, newSize);
   }
 }
@@ -109,9 +117,10 @@ clear_btn.setAttribute(
 
 function clearGrid(e) {
   const pixels = document.querySelectorAll(`[class*="pixel-item"]`);
-  for (let i = 0; i < pixels.length; i++) {
-    pixels[i].style.backgroundColor = "white";
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
   }
+  createGrid(container, grid_size);
 }
 clear_btn.addEventListener("click", clearGrid);
 document.body.append(clear_btn);
@@ -147,6 +156,18 @@ monochrome_pen.setAttribute(
 monochrome_pen.textContent = "Monochrome pen";
 monochrome_pen.className = "monochrome";
 pen_container.append(monochrome_pen);
+
+const legacy_pen = document.createElement("button");
+legacy_pen.setAttribute(
+  `style`,
+  `padding: 1rem;
+  margin: 1rem;
+  font-size: 15px;
+  font-weight: bold;`,
+);
+legacy_pen.textContent = "Normal pen";
+legacy_pen.className = "monochrome-legacy";
+pen_container.append(legacy_pen);
 
 const rainbow_pen = document.createElement("button");
 rainbow_pen.setAttribute(
